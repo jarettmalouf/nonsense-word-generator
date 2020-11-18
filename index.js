@@ -1,6 +1,6 @@
 const consonants = "bcdfghjklmnprstvwxz".split("");
 consonants.push("qu");
-const vowels = "aeiouy".split("");
+const vowels = "aeiou".split("");
 const stops = "pbtdkg".split("");
 const nasals = ["m", "n", "ng"];
 const fricatives = ["f", "v", "th", "s", "z", "sh", "zh", "ch"];
@@ -23,9 +23,16 @@ function getRandomWordWithNSyllables(n) {
 }
 
 function getRandomSyllable() {
-  const onset = getRandomOnset();
+	const r = rand(10);
+  let onset = "", coda = "";
+  if (r > 2) {
+  	onset = getRandomOnset();
+  }
+  const r2 = rand(10);
+  if (r > 3) {
+  	coda = getRandomCoda();
+  }
   const nucleus = getRandomNucleus();
-  const coda = getRandomCoda();
   return onset + nucleus + coda;
 }
 
@@ -48,7 +55,7 @@ function getRandomCoda() {
 }
 
 function getRandomOnset() {
-  return getRandomOnsetWithNLetters(rand(3) + 1);
+  return getRandomOnsetWithNLetters(rand(2) + 1);
 }
 
 function getRandomOnsetWithNLetters(n) {
